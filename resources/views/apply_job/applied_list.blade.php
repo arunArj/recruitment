@@ -1,7 +1,20 @@
 @extends('layouts.theme.base')
 @section('dashboard')
     <div class="main-content container-fluid">
-
+        @if(session('success'))
+        <div class="row justify-content-end align-items-center error-field">
+            <div class="col-3  alert alert-success">
+                 <p>{{ session('success') }}!!</p>
+            </div>
+        </div>
+        @endif
+        @if(session('error'))
+        <div class="row justify-content-end align-items-center error-field">
+            <div class="col-3  alert alert-danger">
+            <p>{{ session('error') }}</p>
+            </div>
+        </div>
+        @endif
         <section class="section">
 
             <div class="row mb-4">
