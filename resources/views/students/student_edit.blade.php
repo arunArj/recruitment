@@ -37,15 +37,7 @@
                         @error('course')
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+
 
                     </div>
 

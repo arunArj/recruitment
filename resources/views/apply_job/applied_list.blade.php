@@ -40,16 +40,7 @@
 
                         </div>
                         <div class="card-body px-0 pb-0">
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-                            @if (session('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
-                            @endif
+
                             <div class="table-responsive">
 
                                 <table class='table mb-0' id="table1">
