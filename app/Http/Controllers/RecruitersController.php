@@ -87,6 +87,11 @@ class RecruitersController extends Controller
 
     }
 
+    public function adminViewRecruiters(){
+
+        $recruiters = Recruiters::all();
+        return view('recruiters.index',compact('recruiters'));
+    }
     /**
      * Remove the specified resource from storage.
      */

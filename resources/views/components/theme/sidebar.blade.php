@@ -66,6 +66,9 @@
                             <li>
                                 <a href="/admin/job-listing">Job Listing</a>
                             </li>
+                            <li>
+                                <a href="/admin/view-company">Recruiters</a>
+                            </li>
                         @endif
                         @if (Auth()->user()->role == 'student')
                         <li>

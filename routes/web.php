@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::post('/admin/users', [AdminController::class, 'store']);
     Route::delete('/users/{id}', [AdminController::class, 'destroy']);
     Route::get('/admin/job-listing', [JobListingsController::class, 'adminJobList']);
+    Route::get('/admin/view-company', [RecruitersController::class, 'adminViewRecruiters']);
     Route::patch('/admin/job-listing/{id}', [JobListingsController::class, 'StatusUpdate']);
 
 
