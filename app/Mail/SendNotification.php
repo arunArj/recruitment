@@ -29,7 +29,7 @@ class SendNotification extends Mailable
     {
         return new Envelope(
             from: new Address('arun@kreataglobal.in', 'Placement App'),
-            subject: 'Placement App Notification - Account created',
+            subject: 'Placement management System Notification - Account created',
         );
     }
 

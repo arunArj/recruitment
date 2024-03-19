@@ -41,7 +41,7 @@
   <div class="container">
 
     <div class="content">
-      <h1 style="font-size: 24px; margin-bottom: 20px;">Welcome to Our Placement cell App!</h1>
+      <h1 style="font-size: 24px; margin-bottom: 20px;">Welcome to Our Placement Management System!</h1>
       <p style="font-size: 16px; margin-bottom: 20px;">Hello {{$content['name']}},</p>
       <p style="font-size: 16px; margin-bottom: 20px;">We are excited to welcome you to our platform. Your account has been successfully created!</p>
       <p style="font-size: 16px; margin-bottom: 20px;">Email : {{$content['email']}}</p>

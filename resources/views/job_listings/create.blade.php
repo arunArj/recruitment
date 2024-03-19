@@ -28,7 +28,7 @@
               <div class="card-body">
 
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-6">
 
                     <div class="form-group">
                         <label for="job_title">Job title</label>
@@ -41,16 +41,8 @@
 
 
                   </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="desc">Description</label>
-                        <textarea class="form-control" name="job_description">{{old('job_description')}}</textarea>
-                        @error('job_description')
-                           <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-                  </div>
-                  <div class="col-md-4">
+
+                  <div class="col-md-6">
                     <div class="form-group">
                       <label for="percentage">percentage</label>
                       <input type="text" name="percentage" value="{{ old('percentage') }}" class="form-control" id="percentage" >
@@ -78,6 +70,15 @@
                       @error('supply')
                         <small class="text-danger">{{ $message }}</small>
                       @enderror
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="desc">Description</label>
+                        <textarea class="form-control" name="job_description" style="min-height: 120px">{{old('job_description')}}</textarea>
+                        @error('job_description')
+                           <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
                   </div>
                 </div>

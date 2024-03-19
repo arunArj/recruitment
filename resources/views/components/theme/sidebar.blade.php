@@ -43,11 +43,11 @@
                     <ul class="submenu">
                         @if (Auth()->user()->role == 'recruiter')
                             <li>
-                                <a href="/profile" class="active">profile</a>
+                                <a href="/profile" class="active">Credentials</a>
                             </li>
                             <li>
-                                <a href="/recruiters/edit/{{ Auth()->user()->recruiter->id }}" class="active">update
-                                    Details</a>
+                                <a href="/recruiters/edit/{{ Auth()->user()->recruiter->id }}" class="active">Update
+                                    pofile</a>
                             </li>
                             <li>
                                 <a href="/recruiter/job-listing">Job List</a>
@@ -58,10 +58,10 @@
                         @endif
                         @if (Auth()->user()->role == 'admin')
                             <li>
-                                <a href="/profile" class="active">profile</a>
+                                <a href="/profile" class="active">Credentials</a>
                             </li>
                             <li>
-                                <a href="/admin/users">users</a>
+                                <a href="/admin/users">Users</a>
                             </li>
                             <li>
                                 <a href="/admin/job-listing">Job Listing</a>
@@ -72,10 +72,12 @@
                         @endif
                         @if (Auth()->user()->role == 'student')
                         <li>
-                            <a href="/profile">profile</a>
+                            <a href="/profile">Credentials</a>
                         </li>
                         <li>
-                            <a href="/students/{{Auth()->user()->student->id}}/edit">Manage Bio</a>
+                            <a href="/students/{{Auth()->user()->student->id}}/edit">Manage Bio @if (Auth()->user()->status=='1')
+                                <i data-feather="check" width="20" style="color: rgb(34, 155, 207)"></i>
+                            @endif</a>
                         </li>
                         <li>
                             <a href="/students/job-listing">Oppertunities </a>

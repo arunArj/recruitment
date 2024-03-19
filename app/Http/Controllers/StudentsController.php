@@ -86,7 +86,7 @@ class StudentsController extends Controller
         'mobile' => $request->mobile,
        ];
 
-        $student->update();
+        $student->update($data);
         if(Auth()->user()->role =='admin'){
             $student->user->status = $request->status;
             $student->user->save();

@@ -48,15 +48,9 @@
                                         <tr>
 
                                             <th>Name</th>
-
                                             <th>Email</th>
-                                            <th>Address</th>
                                             <th>Course</th>
-                                            <th>Percentage</th>
-
-                                            <th>No of Arrers</th>
                                             <th>Status</th>
-
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -65,39 +59,36 @@
                                             <tr>
                                             <td>{{ $item->user->name }}</td>
                                             <td>{{ $item->user->email }}</td>
-                                            <td>{{ $item->user->student->address }}</td>
+
                                             <td>{{ $item->user->student->course }}</td>
-                                            <td>{{ $item->user->student->percentage }}</td>
-                                            <td>{{ $item->user->student->no_of_backlog }}</td>
+
+
                                             <td> @if ($item->status=='0')
-                                                Pending
+                                                registered
                                             @endif
                                             @if ($item->status=='1')
-                                                Selected
-                                            @endif
-                                            @if ($item->status=='2')
-                                                Rejected
+                                                completed
                                             @endif
                                         </td>
 
 
                                             <td>
                                                 <div class="d-flex align-items-center">
-                                                    <a href="{{asset('pdf/'.$item->user->student->resume)}}" style="color: #727e8c;" target="_blank">
-                                                      Resume</a>
+                                                    {{-- <a href="{{asset('pdf/'.$item->user->student->resume)}}" style="color: #727e8c;" target="_blank">
+                                                      Resume</a> --}}
 
-                                                      <button class="btn btn-outline"
+                                                      {{-- <button class="btn btn-outline"
                                                       onclick="applyForm({{ $item->id }})" data-toggle="modal"
                                                       data-target="#bulk-delete">
                                                       <i data-feather="thumbs-up" width="20"></i>
-                                                  </button>
+                                                  </button> --}}
                                                     <button class="btn btn-outline"
                                                         onclick="deleteSupplier({{ $item->id }})" data-toggle="modal"
                                                         data-target="#danger">
-                                                        <i data-feather="thumbs-down" width="20"></i>
+                                                        <i data-feather="send" width="20"></i>
                                                     </button>
-                                                    <a href="{{asset('images/'.$item->user->student->image)}}" style="color: #727e8c;" target="_blank">
-                                                        Image</a>
+                                                    {{-- <a href="{{asset('images/'.$item->user->student->image)}}" style="color: #727e8c;" target="_blank">
+                                                        Image</a> --}}
                                                 </div>
 
                                             </td>
@@ -121,7 +112,7 @@
         </section>
     </div>
 
-    <div class="modal-danger mr-1 mb-1 d-inline-block">
+    <div class="modal-info mr-1 mb-1 d-inline-block">
 
 
         <!--Danger theme Modal -->
@@ -129,37 +120,40 @@
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
-                    <div class="modal-header bg-danger">
-                        <h5 class="modal-title white" id="myModalLabel120">Delete</h5>
+                    <div class="modal-header bg-info">
+                        <h5 class="modal-title white" id="myModalLabel120">Status</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p> you are about to reject this student</p>
+                        <p> updating post status </p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Close</span>
-                        </button>
-                        <button type="button" onclick="deleteSupplierConfirm()" class="btn btn-danger ml-1"
-                            data-dismiss="modal">
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Delete</span>
-                        </button>
-                        <form id="deleteSupplierForm" method="post" action="">
+
+                        <form id="deleteSupplierForm" method="post" action="/">
                             @method('PATCH')
                             @csrf
-                            <input type="hidden" name="status" value="2">
+                            <div class="form-group">
+                                <select class="form-control" name="status" id="">
+                                    <option value="0">Applied</option>
+                                    <option value="1">Completed</option>
+                                </select>
+                            </div>
                         </form>
+
+                        <button type="button" onclick="deleteSupplierConfirm()" class="btn btn-info ml-1"
+                        data-dismiss="modal">
+                        <i class="bx bx-check d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Confirm</span>
+                    </button>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal-danger mr-1 mb-1 d-inline-block">
+    {{-- <div class="modal-danger mr-1 mb-1 d-inline-block">
         <!--Danger theme Modal -->
         <div class="modal fade text-left" id="bulk-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel122"
             aria-hidden="true">
@@ -194,7 +188,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 @section('custom-script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -204,7 +198,7 @@
 
         function deleteSupplier(id) {
             // var supplierId = document.getElementById('supplier_id').value;
-            document.getElementById('deleteSupplierForm').action = '/apply-jobs/' + id;
+            document.getElementById('deleteSupplierForm').action = '/training/student-list/' + id;
             // document.getElementById('deleteSupplierForm').submit();
         }
 

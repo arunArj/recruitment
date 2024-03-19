@@ -59,7 +59,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($jobListings as $key => $item)
+                                        @forelse ($jobListings as $key => $item)
                                             <tr>
                                             <td>{{ $item->job_title }}</td>
 
@@ -89,7 +89,9 @@
                                             </td>
 
                                             </tr>
-                                        @endforeach
+                                            @empty
+                                            <tr><td colspan="7" class="text-center">No Records yet</td></tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
 
@@ -115,7 +117,7 @@
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
-                    <div class="modal-header bg-primary">
+                    <div class="modal-header bg-danger">
                         <h5 class="modal-title white" id="myModalLabel120">Delete</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
@@ -144,41 +146,7 @@
             </div>
         </div>
     </div>
-    <div class="modal-danger mr-1 mb-1 d-inline-block">
-        <!--Danger theme Modal -->
-        <div class="modal fade text-left" id="bulk-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel122"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-danger">
-                        <h5 class="modal-title white" id="myModalLabel122">Delete</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i data-feather="x"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p> you are about to delete these record</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Close</span>
-                        </button>
-                        <button type="button" onclick="bulkDeleteRecord()" class="btn btn-danger ml-1"
-                            data-dismiss="modal">
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Delete</span>
-                        </button>
-                        <form id="deleteSupplierForm" method="post" action="/job-listing/">
-                            @method('DELETE')
-                            @csrf
-                        </form>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 @section('custom-script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"

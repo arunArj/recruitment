@@ -117,6 +117,9 @@
                                         <div id="image-preview-container">
 
                                         </div>
+                                        @error('image')
+                                        <small class="text-danger">{{ $message}}</small>
+                                     @enderror
                                     </div>
 
                                 </div>

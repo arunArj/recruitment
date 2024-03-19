@@ -1,4 +1,5 @@
 @extends('layouts.theme.base')
+
 @section('dashboard')
 <div class="main-content container-fluid">
     @if(session('success'))
@@ -18,78 +19,70 @@
   <section class="section">
     <div class="row mb-4">
       <div class="col-md-12">
-        <form method="POST" action="/job-listing/update/{{ $joblistings->id}}">
-@method('PATCH')
+        <form method="post" action="{{ route('training.store') }}">
           @csrf
           <div class="card">
             <div class="card-header">
-                  <h4 class="card-title">Post Vacancy</h4>
+                  <h4 class="card-title">Create Training Model</h4>
             </div>
 
               <div class="card-body">
 
                 <div class="row">
                   <div class="col-md-6">
-
                     <div class="form-group">
-                        <label for="job_title">Job title</label>
-                        <input type="text" value="{{ $joblistings->job_title}}"  name="job_title" class="form-control" id="job_title" >
-                        @error('job_title')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
-
-                    </div>
-
-
-                  </div>
-
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="percentage">percentage</label>
-                      <input type="text" name="percentage" value="{{ $joblistings->percentage}}" class="form-control" id="percentage" >
-
-                      @error('percentage')
+                      <label for="type">Type</label>
+                      <select name="type" class="form-control" id="type">
+                        <option value="internship">Internship</option>
+                        <option value="workshop">Workshop</option>
+                      </select>
+                      @error('type')
                         <small class="text-danger">{{ $message }}</small>
                       @enderror
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="no_of_vacancy">No of Vacancy</label>
-                      <input type="text" name="no_of_vacancy" value="{{ $joblistings->no_of_vacancy}}" class="form-control" id="no_of_vacancy" >
-
-                      @error('no_of_vacancy')
+                      <label for="topic">Topic</label>
+                      <input type="text" name="topic" value="{{ old('topic') }}" class="form-control" id="topic" >
+                      @error('topic')
                         <small class="text-danger">{{ $message }}</small>
                       @enderror
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="form-group">
-                      <label for="supply">Supply</label>
-                      <input type="text" name="supply" value="{{ $joblistings->supply}}" class="form-control" id="supply" >
-
-                      @error('supply')
+                      <label for="duration">Duration</label>
+                      <input type="text" name="duration" value="{{ old('duration') }}" class="form-control" id="duration" >
+                      @error('duration')
                         <small class="text-danger">{{ $message }}</small>
                       @enderror
                     </div>
                   </div>
-                  <div class="col-md-12">
+                  <div class="col-md-4">
                     <div class="form-group">
-                        <label for="desc">Description</label>
-                        <textarea class="form-control" name="job_description" style="min-height: 120px">{{ $joblistings->job_description}}</textarea>
-                        @error('job_description')
-                           <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                      <label for="start">Start Date</label>
+                      <input type="date" name="start" value="{{ old('start') }}" class="form-control" id="start" >
+                      @error('start')
+                        <small class="text-danger">{{ $message }}</small>
+                      @enderror
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="end">End</label>
+                      <input type="date" name="end" value="{{ old('end') }}" class="form-control" id="end" >
+                      @error('end')
+                        <small class="text-danger">{{ $message }}</small>
+                      @enderror
                     </div>
                   </div>
                 </div>
               </div>
           </div>
-
-        <div class="col-md-4">
+          <div class="col-md-4">
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
-
             </div>
           </div>
       </form>
@@ -98,5 +91,3 @@
   </section>
 </div>
 @endsection
-
-

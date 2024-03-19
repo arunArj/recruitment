@@ -52,7 +52,13 @@ class User extends Authenticatable
     }
 
     public function applyJob(){
-        return $this->hasMany(User::class);
+        return $this->hasMany(ApplyJob::class);
+    }
+    public function training(){
+        return $this->hasMany(Training::class);
+    }
+    public function applyForTraining(){
+        return $this->hasMany(ApplyforTraining::class);
     }
 
 }

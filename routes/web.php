@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ApplyforTrainingController;
 use App\Http\Controllers\ApplyJobController;
 use App\Http\Controllers\JobListingsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecruitersController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\TrainingController;
+use App\Models\ApplyforTraining;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,3 +85,10 @@ Route::group(['middleware' => ['auth', 'recruiter']], function () {
 
 Route::get('/send', [AdminController::class, 'show']);
 require __DIR__.'/auth.php';
+Route::resource('training', TrainingController::class);
+Route::get('/training/apply/{id}', [TrainingController::class,'applyTraining']);
+Route::get('/training/student-list/{id}', [ApplyforTrainingController::class,'getStudentsApplied']);
+Route::patch('/training/student-list/{id}', [ApplyforTrainingController::class,'update']);
+Route::get('/student/training/{id}', [ApplyforTrainingController::class,'studentList']);
+Route::delete('/applied-training/{id}', [ApplyforTrainingController::class,'destroy']);
+Route::get('/resume', [TrainingController::class,'resume']);

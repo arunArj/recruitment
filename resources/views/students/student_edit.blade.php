@@ -87,6 +87,9 @@
 
                                             <img id="image-preview" src="#" alt="Image Preview" style="display: none;height:100px;width:160px;">
                                         </div>
+                                        @error('image')
+                                        <small class="text-danger">{{ $message }}</small>
+                                      @enderror
                                     </div>
                                     <div class="col-lg-6 col-md-12">
 
@@ -99,6 +102,9 @@
                                             <a href="{{asset('pdf/' . $student->resume) }}" target="_blank"> view Resume</a>
                                             @endif
                                         </div>
+                                        @error('resume')
+                                        <small class="text-danger">{{ $message }}</small>
+                                      @enderror
                                     </div>
 
                                 </div>

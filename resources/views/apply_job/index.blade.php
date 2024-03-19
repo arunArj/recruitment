@@ -57,7 +57,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($applied as $key => $item)
+                                        @forelse ($applied as $key => $item)
                                             <tr>
                                             <td>{{ $item->joblisting->recruiter->user->name }}</td>
                                             <td>{{ $item->joblisting->job_title }}</td>
@@ -89,7 +89,9 @@
                                             </td>
 
                                             </tr>
-                                        @endforeach
+                                            @empty
+                                            <tr><td colspan="5" class="text-center">No Records yet</td></tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
 
